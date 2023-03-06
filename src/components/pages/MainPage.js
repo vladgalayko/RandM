@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import ErrorBoundary from '../errorBoundary/ErrorBoundary';
 import CharList from '../charList/CharList';
+import AppBanner from '../appBaner/AppBanner';
 
 const MainPage = () => {
     
@@ -11,6 +12,10 @@ const MainPage = () => {
     }
 
   return (
+    <>
+             <ErrorBoundary>
+                <AppBanner/>
+            </ErrorBoundary>
         <div className="char__content">
             <ErrorBoundary>
                 <CharList onCharSelected={onCharSelected}/>
@@ -21,7 +26,7 @@ const MainPage = () => {
             </ErrorBoundary>
             </div>
         </div>
-    
+    </>
   )
 }
 

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import useRandMService from '../../services/RandMService';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
+import './charList.scss';
 
 const setContent = (process, Component, newItemLoading) => {
     switch (process) {
@@ -25,7 +26,7 @@ const CharList = (props) => {
 
     const [charList, setCharList] = useState([]);
     const [newItemLoading, setNewItemLoading] = useState(false);
-    const [offset, setOffset] = useState(0);
+    const [offset, setOffset] = useState(210);
     const [charEnded, setCharEnded] = useState(false);
 
     const {getAllCharacters, process, setProcess} = useRandMService();
@@ -86,8 +87,9 @@ const CharList = (props) => {
                             focusOnItem(i);
                         }
                     }}>
-                        <img src={item.thumbnail} alt={item.name} style={imgStyle}/>
+                        <img src={item.image} alt={item.name} style={imgStyle}/>
                         <div className="char__name">{item.name}</div>
+                        <div className="char__description">{item.species}</div>
                 </li>
                </CSSTransition>
             )
