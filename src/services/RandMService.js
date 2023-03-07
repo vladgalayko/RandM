@@ -5,16 +5,17 @@ const useRandMService = () => {
 
     const _apiBase = 'https://rickandmortyapi.com/api/';
     const _baseOffset = 826;
+    const page = Math.floor(Math.random() * 42) + 1;
 
 
     const getAllCharacters = async (offset = _baseOffset) => {
-        const res = await request(`${_apiBase}character/?page=2`);
-        console.log(res);
-        return res.results.map(_transformCharacter);
+        const res = await request(`${_apiBase}character/?page=${page}`);
+        return res.results.slice(0,8).map(_transformCharacter);
     }
     const getCharacter = async (id) => {
         const res = await request(`${_apiBase}character/${id}`);
-        return _transformCharacter(res.data.results[0]);
+        console.log(res)
+        return _transformCharacter(res.id);
     }
 
     const _transformCharacter = (char) => {

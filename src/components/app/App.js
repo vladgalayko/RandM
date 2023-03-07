@@ -14,7 +14,7 @@ const App = () => {
         <Suspense>
           <Routes>
             <Route path="/" element={<MainPage/>}/>
-            <Route path="/characters/:charId" element={<SingleCharPage/>}/>
+            <Route path="/character/:charId" element={<SingleCharPage/>}/>
           </Routes>
         </Suspense>
       </div>
