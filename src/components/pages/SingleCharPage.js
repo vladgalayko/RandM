@@ -27,6 +27,7 @@ const SingleCharPage = () => {
     const onCharLoaded = (char) => {
         setChar(char)
     }
+    console.log(char)
     
     return (
         <>
@@ -35,7 +36,7 @@ const SingleCharPage = () => {
     )
 }
 const View = ({data}) => {
-    const {name, description, thumbnail} = data;
+    const {name, image, status, gender, species, origin, type} = data;
 
     return (
         <>
@@ -48,10 +49,14 @@ const View = ({data}) => {
         </Helmet> */}
         {/* <AppBanner /> */}
             <div className="single-comic">
-                <img src={thumbnail} alt={name} className="single-comic__img" />
+                <img src={image} alt={name} className="single-comic__img" />
                 <div className="single-comic__info">
                     <h2 className="single-comic__name">{name}</h2>
-                    <p className="single-comic__descr">{description}</p>
+                    <h2 className="single-comic__name">Gender {gender}</h2>
+                    <p className="single-comic__descr">Status {status}</p>
+                    <p className="single-comic__descr">Specie {species}</p>
+                    <p className="single-comic__descr">Origin {origin}</p>
+                    <p className="single-comic__descr">Type{type ? type :'uknown' }</p>
                 </div>
                 <Link to="/" className="single-comic__back">Back to all</Link>
             </div>
