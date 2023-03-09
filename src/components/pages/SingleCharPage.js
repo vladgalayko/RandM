@@ -1,7 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect} from 'react';
 // import { Helmet } from 'react-helmet';
-// import AppBanner from "../appBanner/AppBanner";
 import useRandMService from '../../services/RandMService';
 import setContent from '../../utils/setContent';
 

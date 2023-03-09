@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef, useMemo} from 'react';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import PropTypes from 'prop-types'
 import useRandMService from '../../services/RandMService';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
+import SearchPanel from '../searchPanel/SearchPanel';
 import './charList.scss';
 import { Link } from 'react-router-dom';
 
@@ -26,6 +26,7 @@ const setContent = (process, Component, newItemLoading) => {
 const CharList = (props) => {
 
     const [charList, setCharList] = useState([]);
+    const [search, setNewSearch] = useState("");
     const [newItemLoading, setNewItemLoading] = useState(false);
     const [offset, setOffset] = useState(826);
     const [charEnded, setCharEnded] = useState(false);
@@ -36,6 +37,17 @@ const CharList = (props) => {
     useEffect(() => {
         onRequest(offset, true);
     }, [])
+
+    const handleSearchChange = (e) => {
+        setNewSearch(e.target.value);
+      };
+
+    const filtered = !search
+    ? charList
+    : charList
+    .filter((char) =>
+        char.name.toLowerCase().includes(search.toLowerCase())
+    );
 
     const onRequest = (offset, initial) => {
         initial ? setNewItemLoading(false) : setNewItemLoading(true);
@@ -56,62 +68,38 @@ const CharList = (props) => {
         setCharEnded(charEnded => ended);
     }
 
-    const itemRefs = useRef([]);
-
-    const focusOnItem = (id) => {
-        itemRefs.current.forEach(item => item.classList.remove('char__item_selected'));
-        itemRefs.current[id].classList.add('char__item_selected');
-        itemRefs.current[id].focus();
-    }
-
     function renderItems(arr) {
         const items =  arr.map((item, i) => {
-            let imgStyle = {'objectFit' : 'cover'};
-            if (item.thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
-                imgStyle = {'objectFit' : 'unset'};
-            }
-       
             return (
-               <CSSTransition key={item.id} timeout={500} classNames="char__item">
-                 <li 
-                    className="char__item"
-                    tabIndex={0}
-                    ref={el => itemRefs.current[i] = el}
-                    key={i}
-                    onClick={() => {
-                        props.onCharSelected(item.id);
-                        focusOnItem(i)
-                        }} 
-                    onKeyPress={(e) => {
-                        if (e.key === ' ' || e.key === "Enter") {
-                            props.onCharSelected(item.id);
-                            focusOnItem(i);
-                        }
-                    }}>
+                 <li
+                    key={item.id}
+                    className="char__item">
                         <Link to={`character/${item.id}`}>
-                        <img src={item.image} alt={item.name} style={imgStyle}/>
+                        <img src={item.image} alt={item.name}/>
                         <div className="char__name">{item.name}</div>
                         <div className="char__description">{item.species}</div>
                         </Link>
                 </li>
-               </CSSTransition>
             )
         });
         return (
             <ul className="char__grid">
-                <TransitionGroup component={null}>
                     {items}
-                </TransitionGroup>
             </ul>
         )
     }
 
-    const elements = useMemo(() => {
-        return setContent(process, () => renderItems(charList), newItemLoading);
-        // eslint-disable-next-line
-    }, [process])
+    const elements = renderItems(filtered);
 
     return (
+        <>
+        <div>
+            <SearchPanel
+            filtered={filtered}
+            handleSearchChange={handleSearchChange}
+            search={search}
+            />
+        </div>
         <div className="char__list">
             {elements}
             <button 
@@ -122,6 +110,7 @@ const CharList = (props) => {
                 <div className="inner">load more</div>
             </button>
         </div>
+        </>
     )
 }
 

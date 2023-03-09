@@ -10,7 +10,9 @@ const useRandMService = () => {
 
     const getAllCharacters = async (offset = _baseOffset) => {
         const res = await request(`${_apiBase}character/?page=${page}`);
-        return res.results.slice(0,8).map(_transformCharacter);
+        return res.results
+        .sort((a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1)
+        .slice(0,8).map(_transformCharacter);
     }
     const getCharacter = async (id) => {
         const res = await request(`${_apiBase}character/${id}`);
