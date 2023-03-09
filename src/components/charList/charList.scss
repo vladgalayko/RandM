@@ -30,24 +30,6 @@
             object-fit: cover;
             border-radius: 8px 8px 0px 0px;            ;
         }
-        &_selected {
-            box-shadow: 0 5px 20px #9F0013;
-            transform: translateY(-8px);
-        }
-        &-enter {
-            opacity: 0;
-        }
-        &-enter-active {
-            opacity: 1;
-            transition: opacity 500ms ease-in;
-        }
-        &-exit {
-            opacity: 1;
-        }
-        &-exit-active {
-            opacity: 0;
-            transition: opacity 500ms ease-in;
-        }
     }
     &__name {
         padding: 14px 14px 0 14px;

@@ -5,7 +5,7 @@ import { useState, useEffect} from 'react';
 import useRandMService from '../../services/RandMService';
 import setContent from '../../utils/setContent';
 
-// import './SingleCharPage.scss';
+import './singleCharPage.scss';
 
 
 const SingleCharPage = () => {
@@ -27,8 +27,7 @@ const SingleCharPage = () => {
     const onCharLoaded = (char) => {
         setChar(char)
     }
-    console.log(char)
-    
+
     return (
         <>
         {setContent(process, View, char)}
@@ -48,17 +47,18 @@ const View = ({data}) => {
         <title>{`${name} page`}</title>
         </Helmet> */}
         {/* <AppBanner /> */}
+        <Link to="/" className="single-comic__back">GO BACK</Link>
             <div className="single-comic">
                 <img src={image} alt={name} className="single-comic__img" />
-                <div className="single-comic__info">
                     <h2 className="single-comic__name">{name}</h2>
-                    <h2 className="single-comic__name">Gender {gender}</h2>
-                    <p className="single-comic__descr">Status {status}</p>
-                    <p className="single-comic__descr">Specie {species}</p>
-                    <p className="single-comic__descr">Origin {origin}</p>
-                    <p className="single-comic__descr">Type{type ? type :'uknown' }</p>
+                    <h2 className="single-comic__informations">Informations</h2>
+                <div className="single-comic__info">
+                    <h2 className="single-comic__descr">Gender<p>{gender}</p></h2>
+                    <h2 className="single-comic__descr">Status<p>{status}</p></h2>
+                    <h2 className="single-comic__descr">Specie<p>{species}</p></h2>
+                    <h2 className="single-comic__descr">Origin<p>{origin}</p></h2>
+                    <h2 className="single-comic__descr">Type<p>{type ? type :'uknown' }</p></h2>
                 </div>
-                <Link to="/" className="single-comic__back">Back to all</Link>
             </div>
         </>
     )
