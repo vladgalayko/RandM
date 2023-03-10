@@ -1,13 +1,14 @@
 import React from 'react';
+import './searchPanel.scss';
 
 export default function SearchPanel({handleSearchChange, search}) {
     return (
-      <div className="conversation-search">
+      <div className="search">
         <input
           onChange={handleSearchChange}
           type="text"
           value={search}
-          className="conversation-search-input"
+          className="search-input"
           placeholder="Filter by name..."
         />
       </div>

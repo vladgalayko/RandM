@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.scss';
 
 import { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
@@ -10,7 +11,7 @@ const SingleCharPage = lazy(() => import('../pages/SingleCharPage'));
 const App = () => {
   return (
     <Router>
-      <div>
+      <div className='App'>
         <Suspense>
           <Routes>
             <Route path="/" element={<MainPage/>}/>

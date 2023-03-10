@@ -100,7 +100,7 @@ const CharList = (props) => {
             search={search}
             />
         </div>
-        <div className="char__list">
+        <div>
             {elements}
             <button 
                 className="button button__main button__long"

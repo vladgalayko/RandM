@@ -1,4 +1,4 @@
-.single-comic {
+.single-char {
     margin-top: 76px;
     display: flex;
     flex-direction: column;
@@ -42,5 +42,16 @@
             line-height: 20px;
             color: #6E798C;
         }
+    }
+    &__back {
+        display: block  ;
+        text-decoration: none;
+        padding: 9px 4px 9px 40px;
+        color: black;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 21px;
+        background: url(../../icons/arrow_back_24px.png) no-repeat 13px center;
+
     }
 }
