@@ -16,7 +16,6 @@ const useRandMService = () => {
     }
     const getCharacter = async (id) => {
         const res = await request(`${_apiBase}character/${id}`);
-        console.log(res)
         return _transformCharacter(res);
     }
 

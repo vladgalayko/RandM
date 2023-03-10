@@ -1,27 +1,9 @@
-import { useState, useEffect, useRef, useMemo} from 'react';
+import { useState, useEffect} from 'react';
 import PropTypes from 'prop-types'
 import useRandMService from '../../services/RandMService';
-import Spinner from '../spinner/Spinner';
-import ErrorMessage from '../errorMessage/ErrorMessage';
 import SearchPanel from '../searchPanel/SearchPanel';
 import './charList.scss';
 import { Link } from 'react-router-dom';
-
-const setContent = (process, Component, newItemLoading) => {
-    switch (process) {
-        case 'waiting':
-            return <Spinner/>;
-        case 'loading':
-            return newItemLoading ? <Component/> : <Spinner/>;
-        case 'confirmed':
-            return <Component/>;
-        case 'error':
-            return <ErrorMessage/>;
-        default:
-            throw new Error('Unexpected process state');
-    }
-}
-
 
 const CharList = (props) => {
 
@@ -31,7 +13,7 @@ const CharList = (props) => {
     const [offset, setOffset] = useState(826);
     const [charEnded, setCharEnded] = useState(false);
 
-    const {getAllCharacters, process, setProcess} = useRandMService();
+    const {getAllCharacters, setProcess} = useRandMService();
 
 
     useEffect(() => {

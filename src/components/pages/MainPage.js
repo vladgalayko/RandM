@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import ErrorBoundary from '../errorBoundary/ErrorBoundary';
 import CharList from '../charList/CharList';
 import AppBanner from '../appBaner/AppBanner';
-import SearchPanel from '../searchPanel/SearchPanel';
+import { Helmet } from 'react-helmet';
 
 const MainPage = () => {
 
@@ -14,6 +14,13 @@ const MainPage = () => {
 
   return (
     <>
+        <Helmet>
+        <meta
+            name="description"
+            content="Rick and Morty"
+            />
+        <title>Rick and Morty</title>
+        </Helmet>
              <ErrorBoundary>
                 <AppBanner/>
             </ErrorBoundary>

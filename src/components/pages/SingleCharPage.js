@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect} from 'react';
-// import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import useRandMService from '../../services/RandMService';
 import setContent from '../../utils/setContent';
 
@@ -39,14 +39,13 @@ const View = ({data}) => {
 
     return (
         <>
-        {/* <Helmet>
+        <Helmet>
         <meta
             name="description"
-            content="Marvel information portal"
+            content="Rick and Morty"
             />
         <title>{`${name} page`}</title>
-        </Helmet> */}
-        {/* <AppBanner /> */}
+        </Helmet>
         <Link to="/" className="single-char__back"><img src=''></img>GO BACK</Link>
             <div className="single-char">
                 <img src={image} alt={name} className="single-char__img" />
