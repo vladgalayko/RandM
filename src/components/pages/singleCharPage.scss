@@ -55,3 +55,33 @@
 
     }
 }
+
+@media only screen and (max-width: 767px) {
+    .single-char {
+    margin-top: 32px;
+        &__name {
+        margin-top: 8px;
+        font-size: 28px;
+        line-height: 32px;
+        }
+        &__informations {
+        margin-bottom: 24px;
+        font-size: 14px;
+        line-height: 18px;
+        }
+        &__descr {
+        width: 90%;
+        font-size: 14px;
+        p {
+        font-size: 12px;
+        line-height: 16px;
+        }
+        }
+        &__back {
+        padding: 9px 4px 9px 32px;
+        font-size: 16px;
+        line-height: 19px;
+        background-position: 9px center;
+        }
+    }
+}

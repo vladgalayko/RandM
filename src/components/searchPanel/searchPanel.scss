@@ -6,3 +6,10 @@
     padding: 9px 4px 9px 40px;
     background: url(../../icons/Vector.png) no-repeat 13px center;
 }
+@media only screen and (max-width: 768px) {
+    .search-input {
+        width: 100%;
+        margin-top: 16px;
+        margin-bottom: 24px;
+        }
+ }

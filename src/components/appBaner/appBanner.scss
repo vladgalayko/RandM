@@ -1,5 +1,29 @@
-.app {
-    &__banner {
-        text-align: center;
-    }
+@media only screen and (max-width: 1536px)  {
+.app__banner {
+    position: relative;
+    width: 100%;
+  }
+.app__baner_img--mobile {
+    display: none;
 }
+  
+  
+.app__baner_img {
+    display: block;
+    width: 600px;
+    height: auto;
+    margin: 0 auto;
+  }
+}
+  
+  @media only screen and (max-width: 767px) {
+    .app__baner_img {
+      display: none;
+    }
+    .app__baner_img--mobile {
+      padding: 92px 24px 24px 24px;
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
